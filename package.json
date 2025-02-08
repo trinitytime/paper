@@ -1,0 +1,17 @@
+{
+  "name": "@tt/paper",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run dev --workspace=@paper/paper",
+    "build": "npm run build --workspace=@paper/paper"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "latest",
+    "@biomejs/biome": "1.9.4"
+  }
+}

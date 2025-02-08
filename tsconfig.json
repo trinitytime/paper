@@ -1,0 +1,48 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"compilerOptions": {
+		/* Type Checking */
+		"strict": true,
+		"noImplicitAny": false,
+
+		/* Modules */
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"types": ["bun-types"],
+
+		/* Emit */
+		"noEmit": true,
+		"declaration": true,
+		"downlevelIteration": true,
+
+		/* JavaScript Support */
+		"allowJs": true,
+
+		/* Editor Support */
+
+		/* Interop Constraints */
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+
+		/* Backwards Compatibility */
+
+		/* Language and Environment */
+		"lib": ["ESNext"],
+		"target": "ESNext",
+		"moduleDetection": "force",
+		"jsx": "preserve",
+
+		/* Compiler Diagnostics */
+
+		/* Projects */
+		"composite": true,
+
+		/* Output Formatting */
+
+		/* Completeness */
+		"skipLibCheck": true
+	},
+	"exclude": ["node_modules", "dist", "public", "*.html"]
+}
