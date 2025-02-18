@@ -1,6 +1,5 @@
 import { initContract } from '@ts-rest/core'
 import { z } from 'zod'
-// import { c } from './contract'
 
 const c = initContract()
 
@@ -8,10 +7,13 @@ export const paper = c.router({
   getList: {
     method: 'GET',
     path: '/paper/list',
-    summary: 'Get a paper by id',
+    query: z.object({
+      location: z.string(),
+    }),
+    summary: 'Get a list of papers',
     responses: {
       200: z.object({
-        demo: z.string(),
+        list: z.any(),
       }),
     },
   },

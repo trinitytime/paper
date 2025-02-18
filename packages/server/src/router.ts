@@ -3,6 +3,9 @@ import path from 'node:path'
 import { contract } from '@paper/api'
 import { fetchRequestHandler, tsr } from '@ts-rest/serverless/fetch'
 import type { Get, UniversalHandler } from '@universal-middleware/core'
+import { FilebasePaper } from './paper'
+
+const paper = new FilebasePaper(path.join(process.cwd(), '../contents'))
 
 /**
  * ts-rest route
@@ -11,12 +14,15 @@ import type { Get, UniversalHandler } from '@universal-middleware/core'
  **/
 const router = tsr.platformContext().router(contract, {
   paper: {
-    getList: async () => {
+    getList: async ({ query }) => {
       console.log('call getList')
+
+      const list = await paper.getItemList(query.location)
+
       return {
         status: 200,
         body: {
-          demo: '<div>Hello</div>',
+          list,
         },
       }
     },
@@ -69,17 +75,17 @@ export const tsRestHandler = () => async (c) => {
   })
 }
 
-export const tsRestHandler2: Get<[], UniversalHandler> = () => async (request, ctx, runtime) => {
-  // console.log(typeof request)
-  return fetchRequestHandler({
-    request: new Request(request.url, request),
-    contract,
-    router,
-    options: {},
-    platformContext: {
-      ...ctx,
-      ...runtime,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } as any,
-  })
-}
+// export const tsRestHandler2: Get<[], UniversalHandler> = () => async (request, ctx, runtime) => {
+//   // console.log(typeof request)
+//   return fetchRequestHandler({
+//     request: new Request(request.url, request),
+//     contract,
+//     router,
+//     options: {},
+//     platformContext: {
+//       ...ctx,
+//       ...runtime,
+//       // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//     } as any,
+//   })
+// }
