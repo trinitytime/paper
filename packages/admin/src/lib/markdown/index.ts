@@ -6,7 +6,6 @@ import markdownItContainer from 'markdown-it-container'
 import markdownItDeflist from 'markdown-it-deflist'
 import markdownItFootnote from 'markdown-it-footnote'
 import markdownItIns from 'markdown-it-ins'
-import markdownItKatex from 'markdown-it-katex'
 import markdownItMark from 'markdown-it-mark'
 import markdownItSub from 'markdown-it-sub'
 import markdownItSup from 'markdown-it-sup'
@@ -28,7 +27,6 @@ export default () => {
         .use(markdownItAbbr)
         .use(markdownItIns)
         .use(markdownItMark)
-        .use(markdownItKatex)
         .use(markdownItTaskLists)
         .use(markdownItContainer)
         .use(linkPlugin)
